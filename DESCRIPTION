@@ -10,7 +10,7 @@ Authors@R:
 Description: Evidence reviews (including systematic reviews and maps) should 
     be described in a high degree of methodological detail. An integral 
     part of the methodological description of a review is a flow driagram. 
-    This package produces an itneractive flow diagram using a .Rhtml document 
+    This package produces an interactive flow diagram using a .Rhtml document 
     to output an interactive .html file that can be added as a static image 
     to a review report or embedded within a project website as an interactive 
     visualisation of the review process. When interactive, the user can click 

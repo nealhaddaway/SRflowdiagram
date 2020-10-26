@@ -8,3 +8,6 @@ When interactive, the user can click on each box and be directed to another webs
 
 One version ('SRflowdiagram.Rhtml') allows the user to specify the numbers of records at each stage in a code chunk at the start of the .Rhtml file, whilst the other ('SRflowdiagram_import.Rhtml') imports a dataframe of data from a locally stored .csv file.
 
+------------------------------------------
+
+<img src="SRflowdiagram.png" align="left" width="100%" height="100%" />
