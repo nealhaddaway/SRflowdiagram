@@ -1,6 +1,6 @@
 Package: SRflowdiagram
 Title: Make Flow Diagram For Systematic Reviews
-Version: 0.0.0.9000
+Version: 0.0.1
 Authors@R: 
     person(given = "Neal R",
            family = "Haddaway",
@@ -17,10 +17,10 @@ Description: Evidence reviews (including systematic reviews and maps) should
     on each box and be directed to another website or file online (e.g. a 
     detailed description of the screeeing methods, or a list of excluded full 
     texts), with a mouseover tool tip that describes the information linked 
-    to in more detail. One version allows the user to specify the numbers of 
-    records at each stage in a code chunk at the start of the .Rhtml file, 
-    whilst the other imports a dataframe of data from a locally stored .csv 
-    file. 
+    to in more detail. One version ('SRflowdiagram.Rhtml') allows the user to 
+    specify the numbers of records at each stage in a code chunk at the start 
+    of the .Rhtml file, whilst the other ('SRflowdiagram_import.Rhtml') 
+    imports a dataframe of data from a locally stored .csv file. 
 License: GPL-3
 Suggests:
     knitr,
