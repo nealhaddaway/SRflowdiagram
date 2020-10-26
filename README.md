@@ -8,4 +8,6 @@ When interactive, the user can click on each box and be directed to another webs
 
 One version ('SRflowdiagram.Rhtml') allows the user to specify the numbers of records at each stage in a code chunk at the start of the .Rhtml file, whilst the other ('SRflowdiagram_import.Rhtml') imports a dataframe of data from a locally stored .csv file.
 
+There is a set of the files dedicated to systematic maps ('SM...Rhtml') and a set of the files dedicated to systematic reviews ('SR...Rhtml').
+
 <a href="https://srflowdiagram.github.io/" target="_blank">See the interactive example here.</a>
