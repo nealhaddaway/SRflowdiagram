@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" >
+<head>
+
+<!--begin.rcode echo=F
+#search results
+search_results <- 31341
+#other records (either as a reference file or a dataframe, for example from web site searches)
+other_results <- 417
+#unique records (following duplicate removal)
+unique_records <- 19874
+dupes <- (search_results + other_results) - unique_records
+#records following title and abstract screening
+included_titlesandabstracts <- 3417
+excluded_titlesandabstracts <- (unique_records - included_titlesandabstracts)
+#records following full text retrieval
+retrieved_fulltexts <- 2294
+inaccessible_fulltexts <- 276
+notfound_fulltexts <- 847
+#records following full text screening
+included_fulltexts <- 1202
+excluded_fulltexts <- (retrieved_fulltexts - included_fulltexts)
+#articles / studies
+final_articles <- 1053
+final_studies <- 1072
+#studies included after critical appraisal
+included_criticalappraisal <- 702
+excluded_criticalappraisal <- (final_studies - included_criticalappraisal)
+#studies included in narrative synthesis
+narrative_synthesis <- included_criticalappraisal
+#studies included in full quantitative/qualitative/other synthesis
+included_fullsynthesis <- 467
+excluded_fullsynthesis <- (included_criticalappraisal - included_fullsynthesis)
+end.rcode-->
+
+	<style type="text/css" media="screen">
+	
+		* {margin: 10; padding: 0;}
+
+		.tree ul {
+			padding-top: 20px; position: relative;
+	
+			-webkit-transition: all 0.5s;
+			-moz-transition: all 0.5s;
+			transition: all 0.5s;
+		}
+
+		.tree li {
+			display: inline-block; text-align: center;
+			list-style-type: none;
+			position: relative;
+			padding: 20px 5px 0 5px;
+	
+			-webkit-transition: all 0.5s;
+			-moz-transition: all 0.5s;
+			transition: all 0.5s;
+		}
+
+		/*We will use ::before and ::after to draw the connectors*/
+
+		.tree li::before, .tree li::after{
+			content: '';
+			position: absolute; top: 0; right: 50%;
+			border-top: 1px solid #ccc;
+			width: 50%; height: 45px;
+			z-index: -1;  
+		}
+		.tree li::after{
+			right: auto; left: 50%;
+			border-left: 1px solid #ccc;
+		}
+
+		/*We need to remove left-right connectors from elements without 
+		any siblings*/
+		.tree li:only-child::after, .tree li:only-child::before {
+			display: none;
+		}
+
+		/*Remove space from the top of single children*/
+		.tree li:only-child{ padding-top: 0;}
+
+		/*Remove left connector from first child and 
+		right connector from last child*/
+		.tree li:first-child::before, .tree li:last-child::after{
+			border: 0 none;
+		}
+		/*Adding back the vertical connector to the last nodes*/
+		.tree li:last-child::before{
+			border-right: 1px solid #ccc;
+			border-radius: 0 5px 0 0;
+			
+			-webkit-transform: translateX(1px);
+			-moz-transform: translateX(1px);
+			transform: translateX(1px);
+			
+			-webkit-border-radius: 0 5px 0 0;
+			-moz-border-radius: 0 5px 0 0;
+			border-radius: 0 5px 0 0;
+		}
+		.tree li:first-child::after{
+			border-radius: 5px 0 0 0;
+			-webkit-border-radius: 5px 0 0 0;
+			-moz-border-radius: 5px 0 0 0;
+		}
+
+		/*Time to add downward connectors from parents*/
+		.tree ul ul::before{
+			content: '';
+			position: absolute; top: -12px; left: 50%;
+			border-left: 1px solid #ccc;
+			width: 0; height: 32px;
+			z-index: -1;
+		}
+
+		.tree li a{
+			border: 1px solid #ccc;
+			padding: 5px 10px;
+			text-decoration: none;
+			color: #666;
+			font-family: arial, verdana, tahoma;
+			font-size: 11px;
+			display: inline-block;
+			background: white;
+	
+			-webkit-border-radius: 5px;
+			-moz-border-radius: 5px;
+			border-radius: 5px;
+	
+			-webkit-transition: all 0.5s;
+			-moz-transition: all 0.5s;
+			transition: all 0.5s;
+		}
+		.tree li a+a {
+			margin-left: 20px;
+			position: relative;
+		}
+		.tree li a+a::before {
+			content: '';
+			position: absolute;
+			border-top: 1px solid #ccc;
+			top: 50%; left: -21px; 
+			width: 20px;
+		}
+
+		/*Time for some hover effects*/
+		/*We will apply the hover effect the the lineage of the element also*/
+		.tree li a:hover{
+			background: #c8e4f8; color: #000; border: 1px solid #94a0b4;
+		}
+
+		{
+			border-color: #94a0b4;
+		}
+		
+		
+    		/* Tooltip container */
+    .tooltip {
+      position: relative;
+      display: inline-block;
+    }
+    
+    /* Tooltip text */
+    .tooltip .tooltiptext {
+      visibility: hidden;
+      width: 160px;
+      background-color: grey;
+      color: #fff;
+      text-align: center;
+      padding: 5px 0;
+      border-radius: 6px;      
+      right: -100px;
+      top: 105%;
+     
+      /* Position the tooltip text - See examples below! */
+      position: absolute;
+      display: inline-block;
+      z-index: 1;
+    }
+    
+    /* Show the tooltip text when you mouse over the tooltip container */
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+    }
+		
+		.tree li .exclusion {
+		  background-color: #ffe6e6
+		}
+		
+		.tree li .input {
+		  background-color: #e5f3e8
+		}
+		
+		.tree li .output {
+		  background-color: #e4f4f6
+		}
+		
+	</style>
+</head>
+<body>
+
+  	  <div class="tree">
+  		<ul>
+  			<li>
+  				<a href="#" class="tooltip input">Bibliographic database search results<br>n = <!--rinline I(format(round(as.numeric(search_results), 0), big.mark=",")) --><span class="tooltiptext">Click to see details of bibliographic database searching</span></a><a href="#" class="tooltip input"><font color="e5f3e8">. .</font>Search results from other sources<font color="e5f3e8">. .</font><br>n = <!--rinline I(format(round(as.numeric(other_results), 0), big.mark=",")) --><span class="tooltiptext">Click to see details of searches of other sources</span></a>
+  				<ul>
+  					<li>
+  						<a href="#" class="tooltip">Records after duplicates removed<br>n = <!--rinline I(format(round(as.numeric(unique_records), 0), big.mark=",")) --><span class="tooltiptext">Click to see details of duplicate removal</span></a><a href="#" class="tooltip exclusion">Duplicates<br>n = <!--rinline I(format(round(as.numeric(dupes), 0), big.mark=",")) --><span class="tooltiptext">Click to see details of duplicate removal</span></a>
+  						<ul>
+  							<li>
+  								<a href="#" class="tooltip">Records after title and abstract screening<br>n = <!--rinline I(format(round(as.numeric(included_titlesandabstracts), 0), big.mark=",")) --><span class="tooltiptext">Click to see details of title and abstract screening</span></a><a href="#" class="tooltip exclusion">Excluded titles and abstracts<br>n = <!--rinline I(format(round(as.numeric(excluded_titlesandabstracts), 0), big.mark=",")) --><span class="tooltiptext">Click to see list of excluded titles and abstracts</span></a>
+						      <ul>
+					          <li>
+						          <a href="#" class="tooltip">Records after full text retrieval<br>n = <!--rinline I(format(round(as.numeric(retrieved_fulltexts), 0), big.mark=",")) --><span class="tooltiptext">Click to see details of full text retrieval</span></a><a href="#" class="tooltip exclusion">Inaccessible, n = <!--rinline I(format(round(as.numeric(inaccessible_fulltexts), 0), big.mark=",")) --><br>Not found, n = <!--rinline I(format(round(as.numeric(notfound_fulltexts), 0), big.mark=",")) --><span class="tooltiptext">Click to see list of non-retrievable full texts</span></a>
+					            <ul>
+				                <li>
+					                <a href="#" class="tooltip">Records after full text screening<br>n = <!--rinline I(format(round(as.numeric(included_fulltexts), 0), big.mark=",")) --><span class="tooltiptext">Click to see details of full text screening</span></a><a href="#" class="tooltip exclusion">Excluded full texts<br>n = <!--rinline I(format(round(as.numeric(excluded_fulltexts), 0), big.mark=",")) --><span class="tooltiptext">Click to see list of excluded full texts, with reasons</span></a>
+							            <ul>
+						                <li>
+							                <a href="#" class="tooltip">Articles / Studies included after full text screening<br>n articles / n studies = <!--rinline I(format(round(as.numeric(final_articles), 0), big.mark=",")) --> / <!--rinline I(format(round(as.numeric(final_studies), 0), big.mark=",")) --><span class="tooltiptext">Click to see list of included articles</span></a>
+							                <ul>
+						                    <li>
+							                    <a href="#" class="tooltip">Studies included after critical appraisal<br>n = <!--rinline I(format(round(as.numeric(included_criticalappraisal), 0), big.mark=",")) --><span class="tooltiptext">Click to see details of critical appraisal</span></a><a href="#" class="tooltip exclusion">Excluded studies<br>n = <!--rinline I(format(round(as.numeric(excluded_criticalappraisal), 0), big.mark=",")) --><span class="tooltiptext">Click to see list of excluded studies, with appraisal judegments</span></a>
+  								                <ul>
+  							                    <li>
+  								                    <a href="#" class="tooltip">Studies included in narrative synthesis<br>n = <!--rinline I(format(round(as.numeric(narrative_synthesis), 0), big.mark=",")) --><span class="tooltiptext">Click to see details of narrative synthesis</span></a>
+  								                    <ul>
+  							                        <li>
+  								                        <a href="#" class="tooltip output">Studies included in full synthesis<br>n = <!--rinline I(format(round(as.numeric(included_fullsynthesis), 0), big.mark=",")) --><span class="tooltiptext">Click to see details of full synthesis</span></a><a href="#" class="tooltip exclusion">Excluded studies<br>n = <!--rinline I(format(round(as.numeric(excluded_fullsynthesis), 0), big.mark=",")) --><span class="tooltiptext">Click to see list of studies not included in full synthesis, with reasons</span></a>
+      								
+    			                                  </li>
+  	                                      </ul>
+    			                              </li>
+    	                                </ul>
+  							                    </li>
+  					                      </ul>
+  							                </li>
+  						                </ul>
+  					                </li>
+  				                </ul>
+  						          </li>
+  					          </ul>
+  							    </li>
+  						    </ul>
+  							</li>
+  						</ul>
+  					</li>
+  				
+  		</ul>
+  		</div>
+
+</body>
+</html>

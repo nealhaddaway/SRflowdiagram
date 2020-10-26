@@ -195,12 +195,14 @@
     /* Tooltip text */
     .tooltip .tooltiptext {
       visibility: hidden;
-      width: 140px;
+      width: 160px;
       background-color: grey;
       color: #fff;
       text-align: center;
       padding: 5px 0;
-      border-radius: 6px;
+      border-radius: 6px;      
+      right: -100px;
+      top: 105%;
      
       /* Position the tooltip text - See examples below! */
       position: absolute;
@@ -231,7 +233,7 @@
   	  <div class="tree">
   		<ul>
   			<li>
-  				<a href="#" class="tooltip input">Bibliographic database search results<br>n = 31,341<span class="tooltiptext">Click to see details of bibliographic database searching</span></a><a href="#" class="tooltip input">Search results from other sources<font color="e5f3e8">. .</font><br>n = 417<span class="tooltiptext">Click to see details of searches of other sources</span></a>
+  				<a href="#" class="tooltip input">Bibliographic database search results<br>n = 31,341<span class="tooltiptext">Click to see details of bibliographic database searching</span></a><a href="#" class="tooltip input"><font color="e5f3e8">. .</font>Search results from other sources<font color="e5f3e8">. .</font><br>n = 417<span class="tooltiptext">Click to see details of searches of other sources</span></a>
   				<ul>
   					<li>
   						<a href="#" class="tooltip">Records after duplicates removed<br>n = 19,874<span class="tooltiptext">Click to see details of duplicate removal</span></a><a href="#" class="tooltip exclusion">Duplicates<br>n = 11,884<span class="tooltiptext">Click to see details of duplicate removal</span></a>
@@ -252,8 +254,18 @@
   								                <a href="#" class="tooltip">Articles / Studies included after full text screening<br>n articles / n studies = 1,053 / 1,072<span class="tooltiptext">Click to see list of included articles</span></a>
   								                <ul>
   							                    <li>
-  								                    <a href="#" class="tooltip output">Studies included in the systematic map<br>database and narrative synthesis<br>n = 1,072<span class="tooltiptext">Click to see systematic map database</span></a>
-  								
+  								                    <a href="#" class="tooltip">Studies included after critical appraisal<br>n = 702<span class="tooltiptext">Click to see details of critical appraisal</span></a><a href="#" class="tooltip exclusion">Excluded studies<br>n = 370<span class="tooltiptext">Click to see list of excluded studies, with appraisal judegments</span></a>
+      								                <ul>
+      							                    <li>
+      								                    <a href="#" class="tooltip">Studies included in narrative synthesis<br>n = 702<span class="tooltiptext">Click to see details of narrative synthesis</span></a>
+      								                    <ul>
+      							                        <li>
+      								                        <a href="#" class="tooltip output">Studies included in full synthesis<br>n = 467<span class="tooltiptext">Click to see details of full synthesis</span></a><a href="#" class="tooltip exclusion">Excluded studies<br>n = 235<span class="tooltiptext">Click to see list of studies not included in full synthesis, with reasons</span></a>
+      								
+    			                                  </li>
+  	                                      </ul>
+    			                              </li>
+    	                                </ul>
   							                    </li>
   					                      </ul>
   							                </li>

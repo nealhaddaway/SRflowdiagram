@@ -10,13 +10,10 @@ other_results <- 417
 #unique records (following duplicate removal)
 unique_records <- 19874
 dupes <- (search_results + other_results) - unique_records
-#records following title and abstract screening
-included_titlesabstracts <- ''
-excluded_titlesandabstract <- ''
-#OR records following title screening (if conducted separately)
+#records following title screening (if conducted separately)
 included_titles <- 8511
 excluded_titles <- (unique_records - included_titles)
-#AND records following abstract screening (if conducted separately)
+#records following abstract screening (if conducted separately)
 included_abstracts <- 3417
 excluded_abstracts <- (included_titles - included_abstracts)
 #records following full text retrieval
@@ -173,7 +170,9 @@ end.rcode-->
       color: #fff;
       text-align: center;
       padding: 5px 0;
-      border-radius: 6px;
+      border-radius: 6px;      
+      right: -100px;
+      top: 105%;
      
       /* Position the tooltip text - See examples below! */
       position: absolute;
