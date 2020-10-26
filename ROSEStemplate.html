@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" >
+<head>
+<style type="text/css">
+.inline {
+  background-color: #f7f7f7;
+  border:solid 1px #B0B0B0;
+}
+.error {
+	font-weight: bold;
+	color: #FF0000;
+}
+.warning {
+	font-weight: bold;
+}
+.message {
+	font-style: italic;
+}
+.source, .output, .warning, .error, .message {
+	padding: 0 1em;
+  border:solid 1px #F7F7F7;
+}
+.source {
+  background-color: #f5f5f5;
+}
+.left {
+  text-align: left;
+}
+.right {
+  text-align: right;
+}
+.center {
+  text-align: center;
+}
+.hl.num {
+  color: #AF0F91;
+}
+.hl.str {
+  color: #317ECC;
+}
+.hl.com {
+  color: #AD95AF;
+  font-style: italic;
+}
+.hl.opt {
+  color: #000000;
+}
+.hl.std {
+  color: #585858;
+}
+.hl.kwa {
+  color: #295F94;
+  font-weight: bold;
+}
+.hl.kwb {
+  color: #B05A65;
+}
+.hl.kwc {
+  color: #55aa55;
+}
+.hl.kwd {
+  color: #BC5A65;
+  font-weight: bold;
+}
+</style>
+
+
+
+	<style type="text/css" media="screen">
+	
+		* {margin: 10; padding: 0;}
+
+		.tree ul {
+			padding-top: 20px; position: relative;
+	
+			-webkit-transition: all 0.5s;
+			-moz-transition: all 0.5s;
+			transition: all 0.5s;
+		}
+
+		.tree li {
+			display: inline-block; text-align: center;
+			list-style-type: none;
+			position: relative;
+			padding: 20px 5px 0 5px;
+	
+			-webkit-transition: all 0.5s;
+			-moz-transition: all 0.5s;
+			transition: all 0.5s;
+		}
+
+		/*We will use ::before and ::after to draw the connectors*/
+
+		.tree li::before, .tree li::after{
+			content: '';
+			position: absolute; top: 0; right: 50%;
+			border-top: 1px solid #ccc;
+			width: 50%; height: 45px;
+			z-index: -1;
+		}
+		.tree li::after{
+			right: auto; left: 50%;
+			border-left: 1px solid #ccc;
+		}
+
+		/*We need to remove left-right connectors from elements without 
+		any siblings*/
+		.tree li:only-child::after, .tree li:only-child::before {
+			display: none;
+		}
+
+		/*Remove space from the top of single children*/
+		.tree li:only-child{ padding-top: 0;}
+
+		/*Remove left connector from first child and 
+		right connector from last child*/
+		.tree li:first-child::before, .tree li:last-child::after{
+			border: 0 none;
+		}
+		/*Adding back the vertical connector to the last nodes*/
+		.tree li:last-child::before{
+			border-right: 1px solid #ccc;
+			border-radius: 0 5px 0 0;
+			
+			-webkit-transform: translateX(1px);
+			-moz-transform: translateX(1px);
+			transform: translateX(1px);
+			
+			-webkit-border-radius: 0 5px 0 0;
+			-moz-border-radius: 0 5px 0 0;
+			border-radius: 0 5px 0 0;
+		}
+		.tree li:first-child::after{
+			border-radius: 5px 0 0 0;
+			-webkit-border-radius: 5px 0 0 0;
+			-moz-border-radius: 5px 0 0 0;
+		}
+
+		/*Time to add downward connectors from parents*/
+		.tree ul ul::before{
+			content: '';
+			position: absolute; top: -12px; left: 50%;
+			border-left: 1px solid #ccc;
+			width: 0; height: 32px;
+			z-index: -1;
+		}
+
+		.tree li a{
+			border: 1px solid #ccc;
+			padding: 5px 10px;
+			text-decoration: none;
+			color: #666;
+			font-family: arial, verdana, tahoma;
+			font-size: 11px;
+			display: inline-block;
+			background: white;
+	
+			-webkit-border-radius: 5px;
+			-moz-border-radius: 5px;
+			border-radius: 5px;
+	
+			-webkit-transition: all 0.5s;
+			-moz-transition: all 0.5s;
+			transition: all 0.5s;
+		}
+		.tree li a+a {
+			margin-left: 20px;
+			position: relative;
+		}
+		.tree li a+a::before {
+			content: '';
+			position: absolute;
+			border-top: 1px solid #ccc;
+			top: 50%; left: -21px; 
+			width: 20px;
+		}
+
+		/*Time for some hover effects*/
+		/*We will apply the hover effect the the lineage of the element also*/
+		.tree li a:hover{
+			background: #c8e4f8; color: #000; border: 1px solid #94a0b4;
+		}
+
+		{
+			border-color: #94a0b4;
+		}
+		
+		
+    		/* Tooltip container */
+    .tooltip {
+      position: relative;
+      display: inline-block;
+    }
+    
+    /* Tooltip text */
+    .tooltip .tooltiptext {
+      visibility: hidden;
+      width: 140px;
+      background-color: grey;
+      color: #fff;
+      text-align: center;
+      padding: 5px 0;
+      border-radius: 6px;
+     
+      /* Position the tooltip text - See examples below! */
+      position: absolute;
+      z-index: 1;
+    }
+    
+    /* Show the tooltip text when you mouse over the tooltip container */
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+    }
+		
+		.tree li .exclusion {
+		  background-color: #ffe6e6
+		}
+		
+		.tree li .input {
+		  background-color: #e5f3e8
+		}
+		
+		.tree li .output {
+		  background-color: #e4f4f6
+		}
+		
+	</style>
+</head>
+<body>
+
+  	  <div class="tree">
+  		<ul>
+  			<li>
+  				<a href="#" class="tooltip input">Records identified through<br>bibliographic database searches<br>n = 31,341<span class="tooltiptext">Click to see details of bibliographic database searching</span></a><a href="#" class="tooltip input">Records identified through<br><font color="e5f3e8">..</font> searching of other resources <font color="e5f3e8">..</font><br>n = 417<span class="tooltiptext">Click to see details of searches of other sources</span></a>
+  				<ul>
+  					<li>
+  						<a href="#" class="tooltip">Records after duplicates removed<br>n = 19,874<span class="tooltiptext">Click to see details of duplicate removal</span></a><a href="#" class="tooltip exclusion">Duplicates<br>n = 11,884<span class="tooltiptext">Click to see details of duplicate removal</span></a>
+  						<ul>
+  							<li>
+  								<a href="#" class="tooltip">Records after title screening<br>n = 8,511<span class="tooltiptext">Click to see details of title screening</span></a><a href="#" class="tooltip exclusion">Excluded titles<br>n = 11,363<span class="tooltiptext">Click to see list of excluded titles</span></a>
+  								<ul>
+  							    <li>
+  								    <a href="#" class="tooltip">Records after abstract screening<br>n = 3,417<span class="tooltiptext">Click to see details of abstract screening</span></a><a href="#" class="tooltip exclusion">Excluded abstracts<br>n = 5,094<span class="tooltiptext">Click to see list of excluded abstracts</span></a>
+  							      <ul>
+  						          <li>
+  							          <a href="#" class="tooltip">Records after full text retrieval<br>n = 2,294<span class="tooltiptext">Click to see details of full text retrieval</span></a><a href="#" class="tooltip exclusion">Inaccessible, n = 276<br>Not found, n = 847<span class="tooltiptext">Click to see list of non-retrievable full texts</span></a>
+  						            <ul>
+  					                <li>
+  						                <a href="#" class="tooltip">Records after full text screening<br>n = 1,202<span class="tooltiptext">Click to see details of full text screening</span></a><a href="#" class="tooltip exclusion">Excluded full texts<br>n = 1,092<span class="tooltiptext">Click to see list of excluded full texts, with reasons</span></a>
+  								            <ul>
+  							                <li>
+  								                <a href="#" class="tooltip">Articles / Studies included after full text screening<br>n articles / n studies = 1,053 / 1,072<span class="tooltiptext">Click to see list of included articles</span></a>
+  								                <ul>
+  							                    <li>
+  								                    <a href="#" class="tooltip output">Studies included in the systematic map<br>database and narrative synthesis<br>n = 1,072<span class="tooltiptext">Click to see systematic map database</span></a>
+  								
+  							                    </li>
+  					                      </ul>
+  							                </li>
+  						                </ul>
+  					                </li>
+  				                </ul>
+  						          </li>
+  					          </ul>
+  							    </li>
+  						    </ul>
+  							</li>
+  						</ul>
+  					</li>
+  				</ul>
+  			</li>
+  				
+  		</ul>
+  		</div>
+
+</body>
+</html>

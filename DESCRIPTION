@@ -1,0 +1,34 @@
+Package: SRflowdiagram
+Title: Make Flow Diagram For Systematic Reviews
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Neal R",
+           family = "Haddaway",
+           role = c("aut", "cre"),
+           email = "nealhaddaway@gmail.com",
+           comment = c(ORCID = "0000-0003-3902-2234"))
+Description: Evidence reviews (including systematic reviews and maps) should 
+    be described in a high degree of methodological detail. An integral 
+    part of the methodological description of a review is a flow driagram. 
+    This package produces an itneractive flow diagram using a .Rhtml document 
+    to output an interactive .html file that can be added as a static image 
+    to a review report or embedded within a project website as an interactive 
+    visualisation of the review process. When interactive, the user can click 
+    on each box and be directed to another website or file online (e.g. a 
+    detailed description of the screeeing methods, or a list of excluded full 
+    texts), with a mouseover tool tip that describes the information linked 
+    to in more detail. One version allows the user to specify the numbers of 
+    records at each stage in a code chunk at the start of the .Rhtml file, 
+    whilst the other imports a dataframe of data from a locally stored .csv 
+    file. 
+License: GPL-3
+Suggests:
+    knitr,
+    rmarkdown
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Date: 2020-10-26
+Depends: 
+    R (>= 2.10)
