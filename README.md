@@ -10,4 +10,4 @@ One version ('SRflowdiagram.Rhtml') allows the user to specify the numbers of re
 
 ------------------------------------------
 
-<img src="SRflowdiagram.png" align="left" width="100%" height="100%" />
+<img src="SRflowdiagram.png" align="left" width="60%" height="60%" />
