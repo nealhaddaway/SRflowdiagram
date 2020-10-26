@@ -20,7 +20,9 @@ Description: Evidence reviews (including systematic reviews and maps) should
     to in more detail. One version ('SRflowdiagram.Rhtml') allows the user to 
     specify the numbers of records at each stage in a code chunk at the start 
     of the .Rhtml file, whilst the other ('SRflowdiagram_import.Rhtml') 
-    imports a dataframe of data from a locally stored .csv file. 
+    imports a dataframe of data from a locally stored .csv file. There exist 
+    two versions of the .Rhtml files - one for systematic reviews ('SR...Rhtml) 
+    and one for systematic maps ('SM...Rhtml').
 License: GPL-3
 Suggests:
     knitr,
