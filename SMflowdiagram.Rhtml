@@ -29,14 +29,8 @@ excluded_fulltexts <- (retrieved_fulltexts - included_fulltexts)
 #articles / studies
 final_articles <- 1053
 final_studies <- 1072
-#studies included after critical appraisal
-included_criticalappraisal <- 702
-excluded_criticalappraisal <- (final_studies - included_criticalappraisal)
-#studies included in narrative synthesis
-narrative_synthesis <- included_criticalappraisal
-#studies included in full quantitative/qualitative/other synthesis
-included_fullsynthesis <- 467
-excluded_fullsynthesis <- (included_criticalappraisal - included_fullsynthesis)
+#systematic map database merged with references (see above)
+map_database <- 1072
 end.rcode-->
 
 	<style type="text/css" media="screen">
@@ -205,7 +199,6 @@ end.rcode-->
   		<ul>
   			<li>
   				<a href="#" class="tooltip input">Bibliographic database search results<br>n = <!--rinline I(format(round(as.numeric(search_results), 0), big.mark=",")) --><span class="tooltiptext">Click to see details of bibliographic database searching</span></a><a href="#" class="tooltip input"><font color="e5f3e8">. .</font>Search results from other sources<font color="e5f3e8">. .</font><br>n = <!--rinline I(format(round(as.numeric(other_results), 0), big.mark=",")) --><span class="tooltiptext">Click to see details of searches of other sources</span></a>
-  				<ul>
   					<li>
   						<a href="#" class="tooltip">Records after duplicates removed<br>n = <!--rinline I(format(round(as.numeric(unique_records), 0), big.mark=",")) --><span class="tooltiptext">Click to see details of duplicate removal</span></a><a href="#" class="tooltip exclusion">Duplicates<br>n = <!--rinline I(format(round(as.numeric(dupes), 0), big.mark=",")) --><span class="tooltiptext">Click to see details of duplicate removal</span></a>
   						<ul>
@@ -225,18 +218,8 @@ end.rcode-->
   								                <a href="#" class="tooltip">Articles / Studies included after full text screening<br>n articles / n studies = <!--rinline I(format(round(as.numeric(final_articles), 0), big.mark=",")) --> / <!--rinline I(format(round(as.numeric(final_studies), 0), big.mark=",")) --><span class="tooltiptext">Click to see list of included articles</span></a>
   								                <ul>
   							                    <li>
-  								                    <a href="#" class="tooltip">Studies included after critical appraisal<br>n = <!--rinline I(format(round(as.numeric(included_criticalappraisal), 0), big.mark=",")) --><span class="tooltiptext">Click to see details of critical appraisal</span></a><a href="#" class="tooltip exclusion">Excluded studies<br>n = <!--rinline I(format(round(as.numeric(excluded_criticalappraisal), 0), big.mark=",")) --><span class="tooltiptext">Click to see list of excluded studies, with appraisal judegments</span></a>
-      								                <ul>
-      							                    <li>
-      								                    <a href="#" class="tooltip">Studies included in narrative synthesis<br>n = <!--rinline I(format(round(as.numeric(narrative_synthesis), 0), big.mark=",")) --><span class="tooltiptext">Click to see details of narrative synthesis</span></a>
-      								                    <ul>
-      							                        <li>
-      								                        <a href="#" class="tooltip output">Studies included in full synthesis<br>n = <!--rinline I(format(round(as.numeric(included_fullsynthesis), 0), big.mark=",")) --><span class="tooltiptext">Click to see details of full synthesis</span></a><a href="#" class="tooltip exclusion">Excluded studies<br>n = <!--rinline I(format(round(as.numeric(excluded_fullsynthesis), 0), big.mark=",")) --><span class="tooltiptext">Click to see list of studies not included in full synthesis, with reasons</span></a>
-      								
-    			                                  </li>
-  	                                      </ul>
-    			                              </li>
-    	                                </ul>
+  								                    <a href="#" class="tooltip output">Studies included in the systematic map<br>database and narrative synthesis<br>n = <!--rinline I(format(round(as.numeric(map_database), 0), big.mark=",")) --><span class="tooltiptext">Click to see systematic map database</span></a>
+  								
   							                    </li>
   					                      </ul>
   							                </li>
