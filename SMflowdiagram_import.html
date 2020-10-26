@@ -1,11 +1,70 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" >
 <head>
+<style type="text/css">
+.inline {
+  background-color: #f7f7f7;
+  border:solid 1px #B0B0B0;
+}
+.error {
+	font-weight: bold;
+	color: #FF0000;
+}
+.warning {
+	font-weight: bold;
+}
+.message {
+	font-style: italic;
+}
+.source, .output, .warning, .error, .message {
+	padding: 0 1em;
+  border:solid 1px #F7F7F7;
+}
+.source {
+  background-color: #f5f5f5;
+}
+.left {
+  text-align: left;
+}
+.right {
+  text-align: right;
+}
+.center {
+  text-align: center;
+}
+.hl.num {
+  color: #AF0F91;
+}
+.hl.str {
+  color: #317ECC;
+}
+.hl.com {
+  color: #AD95AF;
+  font-style: italic;
+}
+.hl.opt {
+  color: #000000;
+}
+.hl.std {
+  color: #585858;
+}
+.hl.kwa {
+  color: #295F94;
+  font-weight: bold;
+}
+.hl.kwb {
+  color: #B05A65;
+}
+.hl.kwc {
+  color: #55aa55;
+}
+.hl.kwd {
+  color: #BC5A65;
+  font-weight: bold;
+}
+</style>
 
-<!--begin.rcode, echo=FALSE
-mapdata <- read.csv('mapdata.csv')
-attach(mapdata)
-end.rcode-->
+
 
 	<style type="text/css" media="screen">
 	
@@ -172,28 +231,28 @@ end.rcode-->
   	  <div class="tree">
   		<ul>
   			<li>
-  				<a href="#" class="tooltip input">Bibliographic database search results<br>n = <!--rinline I(format(round(as.numeric(search_results), 0), big.mark=",")) --><span class="tooltiptext">Click to see details of bibliographic database searching</span></a><a href="#" class="tooltip input">Search results from other sources<font color="e5f3e8">. .</font><br>n = <!--rinline I(format(round(as.numeric(other_results), 0), big.mark=",")) --><span class="tooltiptext">Click to see details of searches of other sources</span></a>
+  				<a href="#" class="tooltip input">Bibliographic database search results<br>n = 31,341<span class="tooltiptext">Click to see details of bibliographic database searching</span></a><a href="#" class="tooltip input">Search results from other sources<font color="e5f3e8">. .</font><br>n = 417<span class="tooltiptext">Click to see details of searches of other sources</span></a>
   				<ul>
   					<li>
-  						<a href="#" class="tooltip">Records after duplicates removed<br>n = <!--rinline I(format(round(as.numeric(unique_records), 0), big.mark=",")) --><span class="tooltiptext">Click to see details of duplicate removal</span></a><a href="#" class="tooltip exclusion">Duplicates<br>n = <!--rinline I(format(round(as.numeric(dupes), 0), big.mark=",")) --><span class="tooltiptext">Click to see details of duplicate removal</span></a>
+  						<a href="#" class="tooltip">Records after duplicates removed<br>n = 19,874<span class="tooltiptext">Click to see details of duplicate removal</span></a><a href="#" class="tooltip exclusion">Duplicates<br>n = 11,884<span class="tooltiptext">Click to see details of duplicate removal</span></a>
   						<ul>
   							<li>
-  								<a href="#" class="tooltip">Records after title screening<br>n = <!--rinline I(format(round(as.numeric(included_titles), 0), big.mark=",")) --><span class="tooltiptext">Click to see details of title screening</span></a><a href="#" class="tooltip exclusion">Excluded titles<br>n = <!--rinline I(format(round(as.numeric(excluded_titles), 0), big.mark=",")) --><span class="tooltiptext">Click to see list of excluded titles</span></a>
+  								<a href="#" class="tooltip">Records after title screening<br>n = 8,511<span class="tooltiptext">Click to see details of title screening</span></a><a href="#" class="tooltip exclusion">Excluded titles<br>n = 11,363<span class="tooltiptext">Click to see list of excluded titles</span></a>
   								<ul>
   							    <li>
-  								    <a href="#" class="tooltip">Records after abstract screening<br>n = <!--rinline I(format(round(as.numeric(included_abstracts), 0), big.mark=",")) --><span class="tooltiptext">Click to see details of abstract screening</span></a><a href="#" class="tooltip exclusion">Excluded abstracts<br>n = <!--rinline I(format(round(as.numeric(excluded_abstracts), 0), big.mark=",")) --><span class="tooltiptext">Click to see list of excluded abstracts</span></a>
+  								    <a href="#" class="tooltip">Records after abstract screening<br>n = 3,417<span class="tooltiptext">Click to see details of abstract screening</span></a><a href="#" class="tooltip exclusion">Excluded abstracts<br>n = 5,094<span class="tooltiptext">Click to see list of excluded abstracts</span></a>
   							      <ul>
   						          <li>
-  							          <a href="#" class="tooltip">Records after full text retrieval<br>n = <!--rinline I(format(round(as.numeric(retrieved_fulltexts), 0), big.mark=",")) --><span class="tooltiptext">Click to see details of full text retrieval</span></a><a href="#" class="tooltip exclusion">Inaccessible, n = <!--rinline I(format(round(as.numeric(inaccessible_fulltexts), 0), big.mark=",")) --><br>Not found, n = <!--rinline I(format(round(as.numeric(notfound_fulltexts), 0), big.mark=",")) --><span class="tooltiptext">Click to see list of non-retrievable full texts</span></a>
+  							          <a href="#" class="tooltip">Records after full text retrieval<br>n = 2,294<span class="tooltiptext">Click to see details of full text retrieval</span></a><a href="#" class="tooltip exclusion">Inaccessible, n = 276<br>Not found, n = 847<span class="tooltiptext">Click to see list of non-retrievable full texts</span></a>
   						            <ul>
   					                <li>
-  						                <a href="#" class="tooltip">Records after full text screening<br>n = <!--rinline I(format(round(as.numeric(included_fulltexts), 0), big.mark=",")) --><span class="tooltiptext">Click to see details of full text screening</span></a><a href="#" class="tooltip exclusion">Excluded full texts<br>n = <!--rinline I(format(round(as.numeric(excluded_fulltexts), 0), big.mark=",")) --><span class="tooltiptext">Click to see list of excluded full texts, with reasons</span></a>
+  						                <a href="#" class="tooltip">Records after full text screening<br>n = 1,202<span class="tooltiptext">Click to see details of full text screening</span></a><a href="#" class="tooltip exclusion">Excluded full texts<br>n = 1,092<span class="tooltiptext">Click to see list of excluded full texts, with reasons</span></a>
   								            <ul>
   							                <li>
-  								                <a href="#" class="tooltip">Articles / Studies included after full text screening<br>n articles / n studies = <!--rinline I(format(round(as.numeric(final_articles), 0), big.mark=",")) --> / <!--rinline I(format(round(as.numeric(final_studies), 0), big.mark=",")) --><span class="tooltiptext">Click to see list of included articles</span></a>
+  								                <a href="#" class="tooltip">Articles / Studies included after full text screening<br>n articles / n studies = 1,053 / 1,072<span class="tooltiptext">Click to see list of included articles</span></a>
   								                <ul>
   							                    <li>
-  								                    <a href="#" class="tooltip output">Studies included in the systematic map<br>database and narrative synthesis<br>n = <!--rinline I(format(round(as.numeric(map_database), 0), big.mark=",")) --><span class="tooltiptext">Click to see systematic map database</span></a>
+  								                    <a href="#" class="tooltip output">Studies included in the systematic map<br>database and narrative synthesis<br>n = 1,072<span class="tooltiptext">Click to see systematic map database</span></a>
   								
   							                    </li>
   					                      </ul>
@@ -213,8 +272,6 @@ end.rcode-->
   				
   		</ul>
   		</div>
-<!--begin.rcode, echo=FALSE
-detach(mapdata)
-end.rcode-->
+
 </body>
 </html>
