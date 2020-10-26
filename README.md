@@ -11,8 +11,8 @@ The file choices are:
 * Systematic reviews (file names beginning with 'SR...')
 * Systematic maps (file names beginning with 'SM...')
 
-* Title and absract screening conducted together (file names containing '_TAcombined')
-* Title and absract screening conducted separately (file names containing '_TAseparate')
+* Title and abstract screening conducted together (file names containing 'TAcombined')
+* Title and absrtact screening conducted separately (file names containing 'TAseparate')
 
 * Files requiring the user to enter the numbers of records in a code chunk at the start of the file before 'knitting' to produce an HTML output
 * Files that read in a CSV file containing the relevant data for the flow diagram (the corresponding 'mapdata...csv' file)
