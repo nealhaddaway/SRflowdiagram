@@ -17,4 +17,6 @@ The file choices are:
 * Files requiring the user to enter the numbers of records in a code chunk at the start of the file before 'knitting' to produce an HTML output
 * Files that read in a CSV file containing the relevant data for the flow diagram (the corresponding 'mapdata...csv' file)
 
+There is a set of the files dedicated to systematic maps ('SM...Rhtml') and a set of the files dedicated to systematic reviews ('SR...Rhtml').
+
 <a href="https://srflowdiagram.github.io/" target="_blank">See the interactive example here.</a>
