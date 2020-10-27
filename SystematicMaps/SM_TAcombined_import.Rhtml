@@ -3,28 +3,8 @@
 <head>
 
 <!--begin.rcode echo=F
-#search results
-search_results <- 31341
-#other records (either as a reference file or a dataframe, for example from web site searches)
-other_results <- 417
-#unique records (following duplicate removal)
-unique_records <- 19874
-dupes <- (search_results + other_results) - unique_records
-#records following title and abstract screening
-included_titlesandabstracts <- 3417
-excluded_titlesandabstracts <- (unique_records - included_titlesandabstracts)
-#records following full text retrieval
-retrieved_fulltexts <- 2294
-inaccessible_fulltexts <- 276
-notfound_fulltexts <- 847
-#records following full text screening
-included_fulltexts <- 1202
-excluded_fulltexts <- (retrieved_fulltexts - included_fulltexts)
-#articles / studies
-final_articles <- 1053
-final_studies <- 1072
-#systematic map database merged with references (see above)
-map_database <- 1072
+mapdata <- read.csv('mapdata_TAcombined.csv')
+attach(mapdata)
 end.rcode-->
 
 	<style type="text/css" media="screen">
@@ -231,6 +211,8 @@ end.rcode-->
   				
   		</ul>
   		</div>
-
+<!--begin.rcode, echo=FALSE
+detach(mapdata)
+end.rcode-->
 </body>
 </html>
