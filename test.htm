@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<style>body{background-color:white;}</style>
+<script src="lib/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<script src="lib/viz-1.8.2/viz.js"></script>
+<link href="lib/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="lib/grViz-binding-1.0.6.9000/grViz.js"></script>
+
+</head>
+<body>
+<div id="htmlwidget_container">
+  <div id="htmlwidget-d6501ef381372bebd4dc" style="width:960px;height:500px;" class="grViz html-widget"></div>
+</div>
+<script type="application/json" data-for="htmlwidget-d6501ef381372bebd4dc">{"x":{"diagram":"\n\ndigraph TD {\n\n# node statements\nnode [shape = box,\n      fontname = Helvetica,\n      style = filled,\n      color = LightBlue1]\n1 [label = \"Records identified through database searching\nn = xxx\"]\n2 [label = \"Records identified through other sources, listed\nn = xxx\"]\n13 [label = \"Pre-screened articles from other sources\nn = xxx\"]\n18 [label = \"Studies included in quantitative/qualitative/other synthesis\nn = xxx\"]\n\nnode [shape = box,\n      fontname = Helvetica,\n      style = filled,\n      color = HoneyDew2]\n3 [label = \"Records after duplicates removed\nn = xxx\"]\n5 [label = \"Records after title screening\nn = xxx\"]\n7 [label = \"Records after acstract screening\nn = xxx\"]\n9 [label = \"Articles retrieved at full text\nn = xxx\"]\n11 [label = \"Articles after full text screening\nn = xxx\"]\n14 [label = \"Articles / Studies included in the review\nn = xxx/ n = xxx\"]\n15 [label = \"Studies included after critical appraisal\nn = xxx\"]\n17 [label = \"Studies included in narrative synthesis\nn = xxx\"]\n\nnode [shape = box,\n      fontname = Helvetica,\n      style = filled,\n      color = RosyBrown1]\n4 [label = \"Duplicates\nn = xxx\"]\n6 [label = \"Excluded titles\nn = xxx\"]\n8 [label = \"Excluded abstracts\nn = xxx\"]\n10 [label = \"Unretrievable full texts:\nNot accessible n = xxx\nNot found n = xxx\"]\n12 [label = \"Excluded full texts\nn = xxx\n\nExclusion reasons:\nreason1; n = xxx\nreason2; n = xxx\nreason3; n = xxx\"]\n16 [label = \"Excluded from further synthesis\nn = xxx\n\nExclusion reasons:\nreason1; n = xxx\nreason2; n = xxx\nreason3; n = xxx\"]\n19 [label = \"Studies not included in further synthesis\nn = xxx\n\nExclusion reasons:\nreason1; n = xxx\nreason2; n = xxx\nreason3; n = xxx\"]\n\n1->3; 2->3;\n13->14; \n3->4;\n3->5; 5->6;\n5->7; 7->8;\n7->9; 9->10;\n9->11; 11->12;\n11->14;\n14->15; 15->16;\n15->17;\n17->18; 18->19;\n\n\n{rank = same; 3; 4}\n{rank = same; 5; 6}\n{rank = same; 7; 8}\n{rank = same; 9; 10}\n{rank = same; 11; 12}\n{rank = same; 13; 14}\n{rank = same; 15; 16}\n{rank = same; 18; 19}\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<script type="application/htmlwidget-sizing" data-for="htmlwidget-d6501ef381372bebd4dc">{"viewer":{"width":450,"height":350,"padding":15,"fill":true},"browser":{"width":960,"height":500,"padding":40,"fill":false}}</script>
+</body>
+</html>
