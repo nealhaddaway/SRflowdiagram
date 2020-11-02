@@ -6,35 +6,106 @@ digraph TD {
 node [shape = box,
       fontname = Helvetica,
       style = filled,
-      color = LightBlue1]
+      color = LightBlue1,
+      width = 2]
 1 [label = '@@1']
 2 [label = '@@2']
-13 [label = '@@13']
-18 [label = '@@18']
 
 node [shape = box,
       fontname = Helvetica,
       style = filled,
       color = HoneyDew2]
 3 [label = '@@3']
-5 [label = '@@5']
-7 [label = '@@7']
-9 [label = '@@9']
-11 [label = '@@11']
-14 [label = '@@14']
-15 [label = '@@15']
-17 [label = '@@17']
 
 node [shape = box,
       fontname = Helvetica,
       style = filled,
       color = RosyBrown1]
 4 [label = '@@4']
+
+node [shape = box,
+      fontname = Helvetica,
+      style = filled,
+      color = HoneyDew2]
+5 [label = '@@5']
+
+node [shape = box,
+      fontname = Helvetica,
+      style = filled,
+      color = RosyBrown1]
 6 [label = '@@6']
+
+node [shape = box,
+      fontname = Helvetica,
+      style = filled,
+      color = HoneyDew2]
+7 [label = '@@7']
+
+node [shape = box,
+      fontname = Helvetica,
+      style = filled,
+      color = RosyBrown1]
 8 [label = '@@8']
+
+node [shape = box,
+      fontname = Helvetica,
+      style = filled,
+      color = HoneyDew2]
+9 [label = '@@9']
+
+node [shape = box,
+      fontname = Helvetica,
+      style = filled,
+      color = RosyBrown1]
 10 [label = '@@10']
+
+node [shape = box,
+      fontname = Helvetica,
+      style = filled,
+      color = HoneyDew2]
+11 [label = '@@11']
+
+node [shape = box,
+      fontname = Helvetica,
+      style = filled,
+      color = RosyBrown1]
 12 [label = '@@12']
+
+node [shape = box,
+      fontname = Helvetica,
+      style = filled,
+      color = LightBlue1]
+13 [label = '@@13']
+
+node [shape = box,
+      fontname = Helvetica,
+      style = filled,
+      color = HoneyDew2]
+14 [label = '@@14']
+15 [label = '@@15']
+
+node [shape = box,
+      fontname = Helvetica,
+      style = filled,
+      color = RosyBrown1]
 16 [label = '@@16']
+
+node [shape = box,
+      fontname = Helvetica,
+      style = filled,
+      color = LightBlue1]
+17 [label = '@@17']
+
+node [shape = box,
+      fontname = Helvetica,
+      style = filled,
+      color = LightBlue1]
+18 [label = '@@18']
+
+node [shape = box,
+      fontname = Helvetica,
+      style = filled,
+      color = RosyBrown1]
 19 [label = '@@19']
 
 1->3; 2->3;
@@ -131,7 +202,7 @@ fullsynth_exclusion_reasons <- data.frame(reason = c('reason1',
 
 node1 <- paste0('Records identified through database searching\nn = ',
                 search_results)
-node2 <- paste0('Records identified through other sources, listed\nn = ',
+node2 <- paste0('Records identified through other sources\nn = ',
                 other_results)
 node3 <- paste0('Records after duplicates removed\nn = ',
                 unique_records)
@@ -164,7 +235,7 @@ node13 <- paste0('Pre-screened articles from other sources\nn = ',
                  prescreened_records)
 node14 <- paste0('Articles / Studies included in the review\nn = ',
                  included_articles,
-                 '/ n = ',
+                 ' / n = ',
                  included_studies)
 node15 <- paste0('Studies included after critical appraisal\nn = ',
                  critappr_includes)
@@ -187,18 +258,9 @@ node19 <- paste0('Studies not included in further synthesis\nn = ',
                              sep = '; n = '),
                        collapse = '\n'))
 
-urldf <- data.frame(nodeid = c("node1", "node2", "node3", "node4", "node5", 
-                               "node6", "node7", "node8", "node9", "node10",
-                               "node11", "node12", "node13", "node14", "node15",
-                               "node16", "node17", "node18", "node19"),
-                    url = c("node1.html", "node2.html", "node3.html", "node4.html", "node5.html", 
-                            "node6.html", "node7.html", "node8.html", "node9.html", "node10.html",
-                            "node11.html", "node12.html", "node13.html", "node14.html", "node15.html",
-                            "node16.html", "node17.html", "node18.html", "node19.html"))
-
 nodes <- read.csv(file.choose())
 
-interact <- function(x, nodes) {
+interact <- function(plot, node, url) {
   #the following function produces three lines of JavaScript per node to add a specified hyperlink for the node, pulled in from nodes.csv
   myfun <- function(node, 
                     url){
@@ -208,8 +270,9 @@ var link', node, ' = "<a href=', url, ' target=\'_blank\'>" + ', node, '.innerHT
 ')
   }
   #the following code adds the location link for the new window - here specified to 'iframe2', but works in a new window if no iframe named
-  javascript <- htmltools::HTML(paste(mapply(myfun, nodes$node, nodes$link), collapse = '\n'))  
-  htmlwidgets::prependContent(x, htmlwidgets::onStaticRenderComplete(javascript))
+  javascript <- htmltools::HTML(paste(mapply(myfun, node, url), collapse = '\n'))  
+  htmlwidgets::prependContent(plot, htmlwidgets::onStaticRenderComplete(javascript))
+  
 }
 
-interact(x, nodes)
+output <- interact(x, nodes$node, nodes$link)
