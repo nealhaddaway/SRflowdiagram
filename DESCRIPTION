@@ -24,6 +24,10 @@ Description: Evidence reviews (including systematic reviews and maps) should
     two versions of the .Rhtml files - one for systematic reviews ('SR...Rhtml) 
     and one for systematic maps ('SM...Rhtml').
 License: GPL-3
+Imports:
+    DiagrammeR,
+    htmltools,
+    htmlwidgets
 Suggests:
     knitr,
     rmarkdown

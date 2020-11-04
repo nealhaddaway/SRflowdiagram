@@ -1,13 +1,13 @@
-x <- grViz("
+x <- DiagrammeR::grViz("
 
 digraph TD {
+
 
 # node statements
 node [shape = box,
       fontname = Helvetica,
       style = filled,
-      color = LightBlue1,
-      width = 2]
+      color = LightBlue1]
 1 [label = '@@1']
 2 [label = '@@2']
 
@@ -157,9 +157,6 @@ x
 #add javascript to replace 'id="node1"' with 'id="node1" href="[url]"
 
 
-devtools::install_github('rich-iannone/DiagrammeR')
-library(DiagrammeR)
-
 search_results <- 'xxx'
 other_results <- 'xxx'
 unique_records <- 'xxx'
@@ -269,7 +266,7 @@ var link', node, ' = "<a href=', url, ' target=\'_blank\'>" + ', node, '.innerHT
 ', node, '.innerHTML = link', node, ';
 ')
   }
-  #the following code adds the location link for the new window - here specified to 'iframe2', but works in a new window if no iframe named
+  #the following code adds the location link for the new window
   javascript <- htmltools::HTML(paste(mapply(myfun, node, url), collapse = '\n'))  
   htmlwidgets::prependContent(plot, htmlwidgets::onStaticRenderComplete(javascript))
   
