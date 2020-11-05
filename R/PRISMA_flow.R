@@ -8,7 +8,9 @@
 #' @param previous_reports
 #' @param register_results
 #' @param database_results
-#' @param other_results
+#' @param website_results
+#' @param organisation_results
+#' @param citations_results
 #' @param duplicates
 #' @param excluded_automatic
 #' @param excluded_other
@@ -67,8 +69,9 @@
 #' previous_reports <- 'xxx'
 #' register_results <- 'xxx'
 #' database_results <- 'xxx'
-#' other_results <- data.frame(source = c('Websites', 'Organisations', 
-#'     'Citation searching'), number = c('xxx', 'xxx', 'xxx'))
+#' website_results <- 'xxx'
+#' organisation_results <- 'xxx'
+#' citations_results <- 'xxx'
 #' duplicates <- 'xxx'
 #' excluded_automatic <- 'xxx'
 #' excluded_other <- 'xxx'
@@ -100,7 +103,9 @@
 #'                 previous_reports = previous_reports,
 #'                 register_results = register_results,
 #'                 database_results = database_results,
-#'                 other_results = other_results,
+#'                 website_results = website_results,
+#'                 organisation_results = organisation_results,
+#'                 citations_results = citations_results,
 #'                 duplicates = duplicates,
 #'                 excluded_automatic = excluded_automatic,
 #'                 excluded_other = excluded_other,
@@ -127,7 +132,9 @@ PRISMA_flowchart <- function (previous_studies,
                              previous_reports,
                              register_results,
                              database_results,
-                             other_results,
+                             website_results,
+                             organisation_results,
+                             citations_results,
                              duplicates,
                              excluded_automatic,
                              excluded_other,
@@ -203,8 +210,13 @@ PRISMA_flowchart <- function (previous_studies,
                    ')')
   # Right branch
   node13 <- 'Identification of new studies via other methods'
-  node14 <- paste0('Records identified from:',
-                   paste(paste('\n\t', other_results[,1], ' (k = ', other_results[,2], ')', sep = ''), collapse = ''))
+  node14 <- paste0('Records identified from:\n\tWebsites (k = ',
+                   website_results,
+                   ')\n\tOrganisations (k = ',
+                   organisation_results,
+                   ')\n\tCitation searching (k = ',
+                   citations_results,
+                   ')')
   node15 <- paste0('Reports sought for retrieval\n(k = ',
                    other_sought_reports,
                    ')')
