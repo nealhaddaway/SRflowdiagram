@@ -19,4 +19,9 @@ The file choices are:
 
 There is a set of the files dedicated to systematic maps ('SM...Rhtml') and a set of the files dedicated to systematic reviews ('SR...Rhtml').
 
-<a href="https://srflowdiagram.github.io/" target="_blank">See the interactive example here.</a>
+<a href="https://srflowdiagram.github.io/" target="_blank">See the interactive examples here.</a>
+
+---
+## PRISMA2020 Flow Chart <img src="PRISMA.png" align="right" width="40%" height="40%" />
+
+You can now produce a flow chart that conforms to the PRISMA 2020 preprint standards by opening the 'PRISMA_flow.R' file in R and entering the relevant data in the R script. Simply replace the relevant 'xxx' values with your data and rerun the `PRISMA_flowchart()` function, which (if 'interactive = TRUE') produces an interactive HTML ouput with each box linking to a specific page (e.g. of search results or methods details), and hover-over tooltips for further information. A static version is produced otherwise. <a href="https://srflowdiagram.github.io/template.html" target="_blank">See the interactive template here.</a>
