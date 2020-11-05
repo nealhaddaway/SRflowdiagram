@@ -2,8 +2,9 @@
 #' 
 #' @description Produces a PRISMA2020 style flow chart for systematic reviews, 
 #' with the option to add interactivity through tooltips (mouseover popups) and 
-#' hyperlink URLs to each box. 
-#' @param plot A plot object from sr_flow().
+#' hyperlink URLs to each box. Data can be imported from the standard CSV template 
+#' provided.
+#' @param plot A plot object from 'sr_flow()'.
 #' @param previous_studies
 #' @param previous_reports
 #' @param register_results
@@ -32,10 +33,12 @@
 #' (tooltips and hyperlinked boxes).
 #' @param tooltips Mouseover popups for each box containing explanatory text. 
 #' Should be provided as a vector.
-#' @param urls A vector urls to act as hyperlinks for each box. A total of 16 
-#' URLs should be provided for each box. See the 'PRISMA_flow_schema.png' for 
-#' details of box numbers, sequentially from top left to bottom across columns, 
-#' from left to right.
+#' @param urls A dataframe of urls to act as hyperlinks for each box, with one column 
+#' (named 'box') corresponding to the boxname ('box1', etc.) and one column (named 
+#' 'url') containing the urls. A total of 16 URLs should be provided, one for each box. 
+#' See the 'PRISMA_flow_schema.png' for details of box numbers, sequentially from 
+#' top left to bottom across columns, from left to right. Additional URLs can be given 
+#' for the side and top rounded panel boxes if desired.
 #' @param font The font for text in each box. The default is 'Helvetica'.
 #' @param title_colour The colour for the upper middle title box (new studies). 
 #' The default is 'Goldenrod1'. See DiagrammeR colour scheme 
@@ -57,48 +60,9 @@
 #' <http://rich-iannone.github.io/DiagrammeR/graphviz_and_mermaid.html#arrow-shapes>.
 #' @return A flow chart plot.
 #' @examples 
-#' tooltips <- c("Previous studies", "Box 1", "New studies", "Box 2", "Box 3", 
-#'     "Box 4", "Box 5", "Box 6", "Box 7", "Box 8", "Box 9", "Box 10", 
-#'     "Other studies", "Box 11", "Box 12", "Box 13", "Box 14", 
-#'     "Box 15", "Box 16", "Identification", "Screening", "Included")
-#' urls <- c('page1.html', 'page2.html', 'page3.html', 'page4.html', 'page5.html', 
-#'     'page6.html', 'page7.html', 'page8.html', 'page9.html', 'page10.html', 
-#'     'page11.html', 'page12.html', 'page13.html', 'page14.html', 'page15.html', 
-#'     'page16.html')
-#' previous_studies <- 'xxx'
-#' previous_reports <- 'xxx'
-#' register_results <- 'xxx'
-#' database_results <- 'xxx'
-#' website_results <- 'xxx'
-#' organisation_results <- 'xxx'
-#' citations_results <- 'xxx'
-#' duplicates <- 'xxx'
-#' excluded_automatic <- 'xxx'
-#' excluded_other <- 'xxx'
-#' records_screened <- 'xxx'
-#' records_excluded <- 'xxx'
-#' dbr_sought_reports <- 'xxx'
-#' dbr_notretrieved_reports <- 'xxx'
-#' other_sought_reports <- 'xxx'
-#' other_notretrieved_reports <- 'xxx'
-#' dbr_assessed <- 'xxx'
-#' dbr_excluded <- data.frame(reason = c('Reason 1', 
-#'                                       'Reason 2', 
-#'                                       'Reason 3'), 
-#'                            number = c('xxx', 
-#'                                       'xxx', 
-#'                                       'xxx'))
-#' other_assessed <- 'xxx'
-#' other_excluded <- data.frame(reason = c('Reason 1', 
-#'                                         'Reason 2', 
-#'                                         'Reason 3'), 
-#'                              number = c('xxx', 
-#'                                         'xxx', 
-#'                                         'xxx'))
-#' new_studies <- 'xxx'
-#' new_reports <- 'xxx'
-#' total_studies <- 'xxx'
-#' total_reports <- 'xxx'
+#' data <- read.csv(file.choose())
+#' data <- read_PRISMAdata(data)
+#' attach(data)
 #' plot <- PRISMA_flowchart(previous_studies = previous_studies,
 #'                 previous_reports = previous_reports,
 #'                 register_results = register_results,
@@ -270,72 +234,72 @@ PRISMA_flowchart <- function (previous_studies,
   node [shape = box,
         fontname = ", font, ",
         color = ", main_colour, "]
-  5 [label = '@@5', width = 3, height = 0.5, pos='8,7.5!', tooltip = '", tooltips[5], "']
+  5 [label = '@@5', width = 3, height = 0.5, pos='8,7.5!', tooltip = '", tooltips[7], "']
   
   node [shape = box,
         fontname = ", font, ",
         color = ", main_colour, "]
-  6 [label = '@@6', width = 3, width = 3, height = 0.5, height = 0.5, pos='4,5.5!', tooltip = '", tooltips[6], "']
+  6 [label = '@@6', width = 3, width = 3, height = 0.5, height = 0.5, pos='4,5.5!', tooltip = '", tooltips[8], "']
   
   node [shape = box,
         fontname = ", font, ",
         color = ", main_colour, "]
-  7 [label = '@@7', width = 3, height = 0.5, pos='8,5.5!', tooltip = '", tooltips[7], "']
+  7 [label = '@@7', width = 3, height = 0.5, pos='8,5.5!', tooltip = '", tooltips[9], "']
   
   node [shape = box,
         fontname = ", font, ",
         color = ", main_colour, "]
-  8 [label = '@@8', width = 3, width = 3, height = 0.5, height = 0.5, pos='4,4.5!', tooltip = '", tooltips[8], "']
+  8 [label = '@@8', width = 3, width = 3, height = 0.5, height = 0.5, pos='4,4.5!', tooltip = '", tooltips[10], "']
   
   node [shape = box,
         fontname = ", font, ",
         color = ", main_colour, "]
-  9 [label = '@@9', width = 3, height = 0.5, pos='8,4.5!', tooltip = '", tooltips[9], "']
+  9 [label = '@@9', width = 3, height = 0.5, pos='8,4.5!', tooltip = '", tooltips[11], "']
   
   node [shape = box,
         fontname = ", font, ",
         color = ", main_colour, "]
-  10 [label = '@@10', width = 3, height = 0.5, pos='4,3.5!', tooltip = '", tooltips[10], "']
+  10 [label = '@@10', width = 3, height = 0.5, pos='4,3.5!', tooltip = '", tooltips[14], "']
   
   node [shape = box,
         fontname = ", font, ",
         color = ", main_colour, "]
-  11 [label = '@@11', width = 3, height = 0.5, pos='8,3.5!', tooltip = '", tooltips[11], "']
+  11 [label = '@@11', width = 3, height = 0.5, pos='8,3.5!', tooltip = '", tooltips[15], "']
     
   node [shape = box,
         fontname = ", font, ",
-        color = ", main_colour, ", pos='6,4.5!', tooltip = '", tooltips[12], "']
+        color = ", main_colour, ", pos='6,4.5!', tooltip = '", tooltips[18], "']
   12 [label = '@@12', pos='4,1.5!']
   
   node [shape = box,
         fontname = ", font, ",
         color = ", greybox_colour, "]
-  13 [label = '@@13', style = 'rounded,filled', width = 7, height = 0.5, pos='13.5,9!', tooltip = '", tooltips[13], "']
+  13 [label = '@@13', style = 'rounded,filled', width = 7, height = 0.5, pos='13.5,9!', tooltip = '", tooltips[5], "']
   
   node [shape = box,
         fontname = ", font, ",
         color = ", greybox_colour, "]
-  14 [label = '@@14', style = 'filled', width = 3, height = 0.5, pos='11.5,7.5!', tooltip = '", tooltips[14], "']
+  14 [label = '@@14', style = 'filled', width = 3, height = 0.5, pos='11.5,7.5!', tooltip = '", tooltips[6], "']
   
   node [shape = box,
         fontname = ", font, ",
         color = ", greybox_colour, "]
-  15 [label = '@@15', style = 'filled', width = 3, height = 0.5, pos='11.5,4.5!', tooltip = '", tooltips[15], "']
+  15 [label = '@@15', style = 'filled', width = 3, height = 0.5, pos='11.5,4.5!', tooltip = '", tooltips[12], "']
   
   node [shape = box,
         fontname = ", font, ",
         color = ", greybox_colour, "]
-  16 [label = '@@16', style = 'filled', width = 3, height = 0.5, pos='15.5,4.5!', tooltip = '", tooltips[16], "']
+  16 [label = '@@16', style = 'filled', width = 3, height = 0.5, pos='15.5,4.5!', tooltip = '", tooltips[13], "']
   
   node [shape = box,
         fontname = ", font, ",
         color = ", greybox_colour, "]
-  17 [label = '@@17', style = 'filled', width = 3, height = 0.5, pos='11.5,3.5!', tooltip = '", tooltips[17], "']
+  17 [label = '@@17', style = 'filled', width = 3, height = 0.5, pos='11.5,3.5!', tooltip = '", tooltips[16], "']
   
   node [shape = box,
         fontname = ", font, ",
         color = ", greybox_colour, "]
-  18 [label = '@@18', style = 'filled', width = 3, height = 0.5, pos='15.5,3.5!', tooltip = '", tooltips[18], "']
+  18 [label = '@@18', style = 'filled', width = 3, height = 0.5, pos='15.5,3.5!', tooltip = '", tooltips[17], "']
 
   node [shape = box,
         fontname = ", font, ",
@@ -343,8 +307,8 @@ PRISMA_flowchart <- function (previous_studies,
   19 [label = '@@19', style = 'filled', width = 3, height = 0.5, pos='4,0!', tooltip = '", tooltips[19], "']
   
   node [shape = square, width = 0, color=White]
-  A [label = '', pos='0.5,0!']
-  B [label = '', pos='11.5,1.5!']
+  A [label = '', pos='0.5,0!', tooltip = '']
+  B [label = '', pos='11.5,1.5!', tooltip = '']
   
   subgraph cluster0 {
     edge [color = White, 
@@ -464,6 +428,80 @@ theDiv.innerHTML += "<text text-anchor=\'middle\' style=\'transform: rotate(-90d
 }
 
 
+#' Read in PRISMA flow chart data
+#' 
+#' @description 
+#' @param 
+#' @return 
+#' @example 
+#' data <- read.csv(file.choose())
+#' data <- read_PRISMAdata(data)
+#' attach(data)
+#' @export
+read_PRISMAdata <- function(data){
+  
+  #Set parameters
+  previous_studies <- data[grep('previous_studies', data[,1]),]$k
+  previous_reports <- data[grep('previous_reports', data[,1]),]$k
+  register_results <- data[grep('register_results', data[,1]),]$k
+  database_results <- data[grep('database_results', data[,1]),]$k
+  website_results <- data[grep('website_results', data[,1]),]$k
+  organisation_results <- data[grep('organisation_results', data[,1]),]$k
+  citations_results <- data[grep('citations_results', data[,1]),]$k
+  duplicates <- data[grep('duplicates', data[,1]),]$k
+  excluded_automatic <- data[grep('excluded_automatic', data[,1]),]$k
+  excluded_other <- data[grep('excluded_other', data[,1]),]$k
+  records_screened <- data[grep('records_screened', data[,1]),]$k
+  records_excluded <- data[grep('records_excluded', data[,1]),]$k
+  dbr_sought_reports <- data[grep('dbr_sought_reports', data[,1]),]$k
+  dbr_notretrieved_reports <- data[grep('dbr_notretrieved_reports', data[,1]),]$k
+  other_sought_reports <- data[grep('other_sought_reports', data[,1]),]$k
+  other_notretrieved_reports <- data[grep('other_notretrieved_reports', data[,1]),]$k
+  dbr_assessed <- data[grep('dbr_assessed', data[,1]),]$k
+  dbr_excluded <- data.frame(reason = gsub(",.*$", "", unlist(strsplit(data[grep('dbr_excluded', data[,1]),]$k, split = '; '))), 
+                             k = gsub(".*,", "", unlist(strsplit(data[grep('dbr_excluded', data[,1]),]$k, split = '; '))))
+  other_assessed <- data[grep('other_assessed', data[,1]),]$k
+  other_excluded <- data.frame(reason = gsub(",.*$", "", unlist(strsplit(data[grep('other_excluded', data[,1]),]$k, split = '; '))), 
+                               k = gsub(".*,", "", unlist(strsplit(data[grep('other_excluded', data[,1]),]$k, split = '; '))))
+  new_studies <- data[grep('new_studies', data[,1]),]$k
+  new_reports <- data[grep('new_reports', data[,1]),]$k
+  total_studies <- data[grep('total_studies', data[,1]),]$k
+  total_reports <- data[grep('total_reports', data[,1]),]$k
+  tooltips <- stats::na.omit(data$tooltips)
+  urls <- data.frame(box = data[!duplicated(data$box), ]$box, url = data[!duplicated(data$box), ]$url)
+  
+  x <- list(previous_studies = previous_studies,
+           previous_reports = previous_reports,
+           register_results = register_results,
+           database_results = database_results,
+           website_results = website_results,
+           organisation_results = organisation_results,
+           citations_results = citations_results,
+           duplicates = duplicates,
+           excluded_automatic = excluded_automatic,
+           excluded_other = excluded_other,
+           records_screened = records_screened,
+           records_excluded = records_excluded,
+           dbr_sought_reports = dbr_sought_reports,
+           dbr_notretrieved_reports = dbr_notretrieved_reports,
+           other_sought_reports = other_sought_reports,
+           other_notretrieved_reports = other_notretrieved_reports,
+           dbr_assessed = dbr_assessed,
+           dbr_excluded = dbr_excluded,
+           other_assessed = other_assessed,
+           other_excluded = other_excluded,
+           new_studies = new_studies,
+           new_reports = new_reports,
+           total_studies = total_studies,
+           total_reports = total_reports,
+           tooltips = tooltips,
+           urls = urls)
+  
+  return(x)
+  
+}
+
+
 #' Insert rotated text to side panel nodes
 #' 
 #' @description Text cannot be rotated within DiagrammeR, so this function appends 
@@ -506,32 +544,25 @@ theDiv.innerHTML += "<text text-anchor=\'middle\' style=\'transform: rotate(-90d
 #' empty.
 #' @return An interactive flow diagram plot.
 #' @examples 
-#' urls <- c('page1.html', 'page2.html', 'page3.html', 'page4.html', 'page5.html', 
-#'     'page6.html', 'page7.html', 'page8.html', 'page9.html', 'page10.html', 
-#'     'page11.html', 'page12.html', 'page13.html', 'page14.html', 'page15.html', 
-#'     'page16.html')
+#' urls <- data.frame(
+#'     box = c('box1', 'box2', 'box3', 'box4', 'box5', 'box6', 'box7', 'box8', 'box9', 'box10', 'box11', 'box12', 'box13', 'box14', 'box15', 'box16'), 
+#'     url = c('page1.html', 'page2.html', 'page3.html', 'page4.html', 'page5.html', 'page6.html', 'page7.html', 'page8.html', 'page9.html', 'page10.html', 
+#'             'page11.html', 'page12.html', 'page13.html', 'page14.html', 'page15.html', 'page16.html'))
 #' output <- sr_flow_interactive(x, urls)
 #' output;
 #' @export
 sr_flow_interactive <- function(plot, 
-                                urls,
-                                intro_link = '',
-                                screen_link = '',
-                                incl_link = '',
-                                previous_link = '',
-                                new_link = '',
-                                other_link = '') {
+                                urls) {
   
-  link <- data.frame(box = c('identification', 'screening', 'included', 'prevstud', 
-                             'box1', 'newstud', 'box2', 'box3', 'box4', 'box5', 
-                             'box6', 'box7', 'box8', 'box9', 'box10', 'othstud', 
-                             'box11', 'box12', 'box13', 'box14', 'box15', 'box16', 
-                             'A', 'B'), 
-                     url = c(intro_link, screen_link, incl_link, previous_link, urls[1], new_link, 
-                             urls[2], urls[3], urls[4], urls[5], urls[6], urls[7], 
-                             urls[8], urls[9], urls[10], other_link, urls[11], urls[12], 
-                             urls[13], urls[14], urls[15], urls[16], '', ''), 
+  link <- data.frame(boxname = c('identification', 'screening', 'included', 'prevstud', 'box1', 'newstud', 'box2', 'box3', 'box4', 'box5', 'box6', 'box7', 
+                                 'box8', 'box9', 'box10', 'othstud', 'box11', 'box12', 'box13', 'box14', 'box15', 'box16', 'A', 'B'), 
                      node = paste0('node', seq(1, 24)))
+  
+  link <- merge(link, urls, by.x = 'boxname', by.y = 'box', all.x = TRUE)
+  #link$order <- readr::parse_number(link$node)
+  #link <- link[order(link$order),]
+  target <- c('node1', 'node2', 'node3', 'node4', 'node5', 'node23', 'node6', 'node7', 'node8', 'node9', 'node10', 'node11', 'node12', 'node13', 'node14', 'node15', 'node22', 'node16', 'node17', 'node18', 'node19', 'node20', 'node21', 'node24')
+  link <- link[match(target, link$node),]
   node <- link$node
   url <- link$url
   
@@ -552,3 +583,4 @@ sr_flow_interactive <- function(plot,
                               htmlwidgets::onStaticRenderComplete(javascript))
   
 }
+
