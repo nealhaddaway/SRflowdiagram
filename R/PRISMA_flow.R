@@ -4,10 +4,6 @@
 #' with the option to add interactivity through tooltips (mouseover popups) and 
 #' hyperlink URLs to each box. 
 #' @param plot A plot object from sr_flow().
-#' @param urls A vector urls to act as hyperlinks for each box. A total of 16 
-#' URLs should be provided for each box. See the 'PRISMA_flow_schema.png' for 
-#' details of box numbers, sequentially from top left to bottom across columns, 
-#' from left to right.
 #' @param previous_studies
 #' @param previous_reports
 #' @param register_results
@@ -30,10 +26,14 @@
 #' @param new_reports
 #' @param total_studies
 #' @param total_reports
-#' @param tooltips Mouseover popups for each box containing explanatory text. 
-#' Should be provided as a vector.
 #' @param interactive Logical argument TRUE or FALSE whether to plot interactivity 
 #' (tooltips and hyperlinked boxes).
+#' @param tooltips Mouseover popups for each box containing explanatory text. 
+#' Should be provided as a vector.
+#' @param urls A vector urls to act as hyperlinks for each box. A total of 16 
+#' URLs should be provided for each box. See the 'PRISMA_flow_schema.png' for 
+#' details of box numbers, sequentially from top left to bottom across columns, 
+#' from left to right.
 #' @param font The font for text in each box. The default is 'Helvetica'.
 #' @param title_colour The colour for the upper middle title box (new studies). 
 #' The default is 'Goldenrod1'. See DiagrammeR colour scheme 
@@ -118,8 +118,9 @@
 #'                 new_reports = new_reports,
 #'                 total_studies = total_studies,
 #'                 total_reports = total_reports,
+#'                 interactive = TRUE,
 #'                 tooltips = tooltips,
-#'                 interactive = TRUE)
+#'                 urls = urls)
 #' plot
 #' @export
 PRISMA_flowchart <- function (previous_studies,
@@ -144,8 +145,9 @@ PRISMA_flowchart <- function (previous_studies,
                              new_reports,
                              total_studies,
                              total_reports,
-                             tooltips = '',
                              interactive = FALSE,
+                             tooltips = '',
+                             urls = '',
                              font = 'Helvetica',
                              title_colour = 'Goldenrod1',
                              greybox_colour = 'Gainsboro',
