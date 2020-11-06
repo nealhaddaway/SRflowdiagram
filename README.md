@@ -28,5 +28,6 @@ You can now produce a flow chart that conforms to the PRISMA 2020 preprint stand
 
 A static version is produced otherwise. <a href="https://srflowdiagram.github.io/template.html" target="_blank">
   
-  See the interactive template here.</a>
+See the interactive template here.</a>
+
 <a href="https://youtu.be/upLERqJdOaY" target="_blank">Check out this walkthrough video for how to run the R script to generate an interactive flow chart</a>
